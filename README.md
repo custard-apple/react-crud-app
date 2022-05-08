@@ -68,3 +68,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+Module not found: Can't resolve 'redux' in node_modules
+npm install --save redux react-redux
+https://stackoverflow.com/questions/55199773/module-not-found-cant-resolve-redux-in-node-modules
