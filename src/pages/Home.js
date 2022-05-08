@@ -103,7 +103,7 @@ const Home = () => {
                     <div className={buttons.root}>
                       <ButtonGroup  aria-label="outlined primary button group">
                         <Button color="secondary" onClick={()=> handleDelete(user.id)}>Delete</Button>
-                        <Button color="primary">Edit</Button>
+                        <Button color="primary" onClick={()=> history(`/editUser/${user.id}`)}>Edit</Button>
                       </ButtonGroup>
                     </div>
                     </StyledTableCell>

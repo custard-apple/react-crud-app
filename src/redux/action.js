@@ -14,13 +14,22 @@ const userAdded = () => ({
     type: types.ADD_USER,
 });
 
+const getUser = (user) => ({
+    type: types.GET_SINGLE_USER,
+    payload: user,
+});
+
+const userUpdated = () => ({
+    type: types.UPDATE_USER,
+});
+
 export const loadUsers = () => {
     return function (dispatch) {
         axios
         .get(`${process.env.REACT_APP_API}`)
         .then(
             (resp) => {
-                console.log("resp", resp.data);
+                //console.log("resp", resp.data);
                 dispatch(
                     getUsers(resp.data)
                 )
@@ -38,7 +47,7 @@ export const deleteUser = (id) => {
         .delete(`${process.env.REACT_APP_API}/${id}`)
         .then(
             (resp) => {
-                console.log("resp", resp.data);
+                //console.log("resp", resp.data);
                 dispatch( userDeleted());
                 dispatch( loadUsers());
             }
@@ -55,8 +64,40 @@ export const addUser = (user) => {
         .post(`${process.env.REACT_APP_API}`, user)
         .then(
             (resp) => {
-                console.log("resp", resp.data);
+                //console.log("resp", resp.data);
                 dispatch( userAdded());
+            }
+        )
+        .catch(
+            (error) => console.log(error)
+        );
+    };
+};
+
+export const getSingleUser = (id) => {
+    return function (dispatch) {
+        axios
+        .get(`${process.env.REACT_APP_API}/${id}`)
+        .then(
+            (resp) => {
+                console.log("resp", resp.data);
+                dispatch( getUser(resp.data));
+            }
+        )
+        .catch(
+            (error) => console.log(error)
+        );
+    };
+};
+
+export const updateUser = (user, id) => {
+    return function (dispatch) {
+        axios
+        .put(`${process.env.REACT_APP_API}/${id}`, user)
+        .then(
+            (resp) => {
+                console.log("resp", resp.data);
+                dispatch( userUpdated());
             }
         )
         .catch(
