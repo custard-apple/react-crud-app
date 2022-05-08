@@ -1,15 +1,25 @@
 {
-    "posts": [
-      { "id": 1,
-         "title": "json-server",
-          "author": "typicode" 
+    "user": [
+        {
+            "name": "Akshay",
+            "email": "ak@gmail.com",
+            "contact": "271246734759438",
+            "address": "kharadi",
+            "id": 1
+        },
+        {
+            "name": "nisha",
+            "email": "nk@gmail.com",
+            "contact": "271246734759438",
+            "address": "kharadi",
+            "id": 2
+        },
+        {
+            "name": "Chotu",
+            "email": "chotu@gmail.com",
+            "contact": "271246734759438",
+            "address": "kharadi",
+            "id": 3
         }
-    ],
-    "comments": [
-      { "id": 1,
-         "body": "some comment",
-          "postId": 1 
-        }
-    ],
-    "profile": { "name": "typicode" }
+    ]
 }
