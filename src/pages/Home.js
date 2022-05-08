@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteUser, loadUsers } from '../redux/action';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import { useNavigate } from 'react-router-dom';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -54,6 +55,8 @@ const Home = () => {
     const buttons = useButtonStyles();
 
     let dispatch = useDispatch();
+    let history = useNavigate();
+
     const { users } = useSelector(state => state.data)
 
     useEffect(() => {
@@ -68,6 +71,14 @@ const Home = () => {
 
   return (
     <div>
+      <div className={buttons.root}>
+        <Button 
+        variant="contained" 
+        color="primary" 
+        onClick={()=> history("/addUser")}>
+          Add User
+        </Button>
+      </div>
         <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
                 <TableHead>

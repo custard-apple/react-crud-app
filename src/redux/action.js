@@ -10,6 +10,10 @@ const userDeleted = () => ({
     type: types.DELETE_USER,
 });
 
+const userAdded = () => ({
+    type: types.ADD_USER,
+});
+
 export const loadUsers = () => {
     return function (dispatch) {
         axios
@@ -37,6 +41,22 @@ export const deleteUser = (id) => {
                 console.log("resp", resp.data);
                 dispatch( userDeleted());
                 dispatch( loadUsers());
+            }
+        )
+        .catch(
+            (error) => console.log(error)
+        );
+    };
+};
+
+export const addUser = (user) => {
+    return function (dispatch) {
+        axios
+        .post(`${process.env.REACT_APP_API}`, user)
+        .then(
+            (resp) => {
+                console.log("resp", resp.data);
+                dispatch( userAdded());
             }
         )
         .catch(
