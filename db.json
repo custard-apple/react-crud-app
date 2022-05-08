@@ -1,25 +1,18 @@
 {
-    "user": [
-        {
-            "name": "Akshay",
-            "email": "ak@gmail.com",
-            "contact": "271246734759438",
-            "address": "kharadi",
-            "id": 1
-        },
-        {
-            "name": "nisha",
-            "email": "nk@gmail.com",
-            "contact": "271246734759438",
-            "address": "kharadi",
-            "id": 2
-        },
-        {
-            "name": "Chotu",
-            "email": "chotu@gmail.com",
-            "contact": "271246734759438",
-            "address": "kharadi",
-            "id": 3
-        }
-    ]
+  "user": [
+    {
+      "name": "Nisha",
+      "email": "ak@gmail.com",
+      "contact": "271246734759438",
+      "address": "kharadi",
+      "id": 2
+    },
+    {
+      "name": "Chotu",
+      "email": "ak@gmail.com",
+      "contact": "271246734759438",
+      "address": "kharadi",
+      "id": 3
+    }
+  ]
 }

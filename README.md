@@ -73,3 +73,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 Module not found: Can't resolve 'redux' in node_modules
 npm install --save redux react-redux
 https://stackoverflow.com/questions/55199773/module-not-found-cant-resolve-redux-in-node-modules
+
+By doing so, you ask React.useEffect to always call axios.get whenever coordinates.length change. Which will make this useEffect an infinite loop (because you always change the coordinates value whenever the axios request finish).
+
+https://stackoverflow.com/questions/61959581/why-is-my-axios-get-call-repeating-over-and-over-using-react-useeffect-to-fetch
+
+ useEffect(() => {
+        dispatch(loadUsers());
+    }, [])

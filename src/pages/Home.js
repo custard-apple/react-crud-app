@@ -8,7 +8,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useDispatch, useSelector } from "react-redux";
-import { loadUsers } from '../redux/action';
+import { deleteUser, loadUsers } from '../redux/action';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -28,18 +30,6 @@ const StyledTableCell = withStyles((theme) => ({
     },
   }))(TableRow);
   
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
-  
-  const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-  ];
-  
   const useStyles = makeStyles({
     table: {
         marginTop: 100,
@@ -47,9 +37,21 @@ const StyledTableCell = withStyles((theme) => ({
     },
   });
 
+  const useButtonStyles = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+  }));
+
   
 const Home = () => {
     const classes = useStyles();
+    const buttons = useButtonStyles();
 
     let dispatch = useDispatch();
     const { users } = useSelector(state => state.data)
@@ -57,6 +59,12 @@ const Home = () => {
     useEffect(() => {
         dispatch(loadUsers());
     }, [])
+
+    const handleDelete = (id) => {
+      if(window.confirm("Are you sure you wanted to delete the user ?")) {
+        dispatch(deleteUser(id));
+      }
+    }
 
   return (
     <div>
@@ -80,9 +88,17 @@ const Home = () => {
                     <StyledTableCell align="center">{user.email}</StyledTableCell>
                     <StyledTableCell align="center">{user.contact}</StyledTableCell>
                     <StyledTableCell align="center">{user.address}</StyledTableCell>
-                    <StyledTableCell align="center"></StyledTableCell>
+                    <StyledTableCell align="center">
+                    <div className={buttons.root}>
+                      <ButtonGroup  aria-label="outlined primary button group">
+                        <Button color="secondary" onClick={()=> handleDelete(user.id)}>Delete</Button>
+                        <Button color="primary">Edit</Button>
+                      </ButtonGroup>
+                    </div>
+                    </StyledTableCell>
                     </StyledTableRow>
                 ))}
+                 
                 </TableBody>
             </Table>
         </TableContainer>
